@@ -18,6 +18,51 @@
     position: fixed;
     right: 20px;
     width: 30px;
+}
+nav {
+  display: flex;
+  align-items: center;
 
+}
 
+nav ul {
+  list-style: none;
+    margin-left: 100px;
+}
+
+nav li {
+  display: inline-block;  
+}
+a{
+  color: white;
+  text-decoration: none;
+  padding: 1rem;
+}
+a:hover{
+  color: blue;
+}
+
+nav + nav {
+  margin-left: 150px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .logo {
+    width: 80px;
+  }
+
+  .avatar {
+    width: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: 70px;
+  }
+
+  .avatar {
+    width: 25px;
+  }
 }

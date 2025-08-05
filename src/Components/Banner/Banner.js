@@ -1,20 +1,34 @@
-import React from 'react'
-import './Banner.css'
 
-function Banner() {
+import React, {  useEffect, useState } from 'react'
+import {API_KEY, imageUrl} from '../../constants/constants'
+import './Banner.css'
+import axios from '../../axios'
+
+function Banner() {  
+  const [movie, setMovie] = useState();   
+  
+  useEffect(()=>{
+    axios.get(`trending/all/week?api_key=${API_KEY}&language=en-US`).then((response)=>{
+      // console.log(response.data.results[9])
+      const results = response.data.results;
+      const randomIndex = Math.floor(Math.random() *results.length)
+      setMovie(results[randomIndex])
+    })
+
+  },[])
   return (
-    <div className='banner'>
+    <div className='banner' style={{
+      backgroundImage: `url(${imageUrl}${movie?.backdrop_path})`
+    }}>
         <div className='content'>
-            <h1 className='title'>Movie name</h1>
+            <h1 className='title'>{movie?.title}</h1>
+            {/* <h1 className='title'>{movie ? movie.title : " "}</h1> */}
+            
             <div className='banner_buttons'>
                 <button className='button'>Play </button>
                 <button className='button'>My List</button>
             </div>
-            <h1 className='description'>Lorem, ipsum dolor sit amet
-                 consectetur adipisicing elit. Harum amet nisi,
-                 reiciendis nulla labore, ratione ex repudiandae repellendus
-                  sint deserunt!
-            </h1>
+            <h1 className='description'>{movie?.overview}  </h1>
             
         </div>
         <div className="fade_bottom"></div>

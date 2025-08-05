@@ -16,3 +16,32 @@
     margin-right: 10px;
 
 }
+
+/* Responsive Sizes */
+@media (max-width: 1024px) {
+  .poster {
+    max-height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .poster {
+    max-height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .row {
+    margin-left: 10px;
+  }
+
+  .row h2 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .poster {
+    max-height: 120px;
+    margin-right: 6px;
+  }
+}
